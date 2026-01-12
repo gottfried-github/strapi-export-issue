@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pieces",
+  "info": {
+    "singularName": "piece",
+    "pluralName": "pieces",
+    "displayName": "Piece"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "performances": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::performance.performance",
+      "mappedBy": "pieces"
+    }
+  }
+}
