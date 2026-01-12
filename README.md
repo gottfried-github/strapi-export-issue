@@ -1,11 +1,13 @@
+Reproduction for [this issue](https://github.com/strapi/strapi/issues/25171).
+
 # Reproduce the issue
 
 1. start the containers: `docker compose -f docker-compose.dev.yml up`
 2. sign up to Strapi admin (`localhost:1337/admin`) and create some content
 3. stop the containers
-4. run `docker compose run strapi npm run strapi export -- --no-encrypt --no-compress -f /usr/src/app/backups/<export filename>`
+4. run `docker compose -f docker-compose.dev.yml run strapi npm run strapi export -- --no-encrypt --no-compress -f /usr/src/app/backups/<export filename>`; observe that the command didn't export the `pieces` and `performances` content nor their links
 5. start the containers again: `docker compose -f docker-compose.dev.yml up`
-6. visit `localhost:1337/admin` and observer that Strapi redirects to sign up page
+6. visit `localhost:1337/admin` and observe that Strapi redirects to sign up page
 7. sign up and observe that there's no content
 
 ## Accessing database
